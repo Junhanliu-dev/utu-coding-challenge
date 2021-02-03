@@ -8,6 +8,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using System.Linq;
+using Application.helpler;
 
 namespace Application.Cryptos
 {
@@ -50,15 +51,15 @@ namespace Application.Cryptos
 
             //Calculate price difference in past 24 hours
             DateTime past24Hrs = latestDate.AddHours(-24);
-            differenceIn24Hrs = CalPriceDifference(past24Hrs, latestDate, history);
+            differenceIn24Hrs = PriceHelpler.CalPriceDifference(past24Hrs, latestDate, history);
 
             //Calculate price difference in past 7 days
             DateTime past7Days = latestDate.AddDays(-7);
-            differenceIn7Days = CalPriceDifference(past7Days, latestDate, history);
+            differenceIn7Days = PriceHelpler.CalPriceDifference(past7Days, latestDate, history);
 
             //Calculate price difference in past month
             DateTime pastMonth = latestDate.AddMonths(-1);
-            differenceInMonth = CalPriceDifference(pastMonth, latestDate, history);
+            differenceInMonth = PriceHelpler.CalPriceDifference(pastMonth, latestDate, history);
           }
 
           viewModel.Add(new CryptoModel
@@ -75,23 +76,6 @@ namespace Application.Cryptos
         }
 
         return viewModel;
-      }
-
-      private double CalPriceDifference(DateTime dateFrom, DateTime dateTo, List<CryptoHistory> history)
-      {
-
-        List<double> historyClosePriceInDate = history
-                                            .Where(h => (h.Date >= dateFrom) && (h.Date <= dateTo))
-                                            .OrderByDescending(h => h.Date)
-                                            .Select(h => h.Close)
-                                            .ToList();
-
-        double newNumber = historyClosePriceInDate[0];
-        double originalNumber = historyClosePriceInDate.Last();
-
-        double difference = ((newNumber - originalNumber) / originalNumber) * 100;
-        // Console.WriteLine(Math.Round(difference, 2));
-        return Math.Round(difference, 2);
       }
     }
   }

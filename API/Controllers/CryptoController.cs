@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using System;
 using System.Threading;
 using Domain.model;
+using Domain;
 using System.Collections.Generic;
 using MediatR;
 using Application.Cryptos;
@@ -24,6 +26,12 @@ namespace API.Controllers
     {
 
       return await _mediator.Send(new List.Query(), ct);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Crypto>> Get(Guid id)
+    {
+      return await _mediator.Send(new Get.Query { Id = id });
     }
 
   }
