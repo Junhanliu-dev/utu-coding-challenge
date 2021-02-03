@@ -28,7 +28,7 @@ namespace Application.Cryptos
 
       public async Task<Crypto> Handle(Query request, CancellationToken ct)
       {
-        var crypto = await _context.Cryptos.Include(c => c.History).SingleOrDefaultAsync(c => c.CryptoId == request.Id, ct);
+        var crypto = await _context.Cryptos.Include(c => c.History).FirstOrDefaultAsync(c => c.CryptoId == request.Id, ct);
 
         if (crypto == null)
         {

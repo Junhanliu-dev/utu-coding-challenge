@@ -34,5 +34,24 @@ namespace API.Controllers
       return await _mediator.Send(new Get.Query { Id = id });
     }
 
+    [HttpGet("{id}/filter/{dateFilter?}")]
+    public async Task<ActionResult<Crypto>> GetWithDate(Guid id, string dateFilter= "TwentyFourHours")
+    {
+      DateQueryFilter filter;
+      
+      try
+      {
+        filter = (DateQueryFilter) Enum.Parse(typeof(DateQueryFilter), dateFilter, true);
+      }
+      catch (ArgumentException e)
+      {
+        filter = DateQueryFilter.TwentyFourHours;
+      }
+
+      var query = new GetLatest.Query {Id = id, DateQueryFilter = filter};
+
+      return await _mediator.Send(query);
+    }
+
   }
 }
