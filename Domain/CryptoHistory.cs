@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Domain
 {
@@ -6,8 +8,10 @@ namespace Domain
   {
     public Guid CryptoForeignKey { get; set; }
 
+    public int Id { get; set; }
+
+    [JsonIgnore]
     public Crypto Crypto { get; set; }
-    public string Name { get; set; }
 
     public DateTime Date { get; set; }
 
@@ -21,6 +25,5 @@ namespace Domain
     public long Volume { get; set; }
 
     public long MarketCap { get; set; }
-
   }
 }

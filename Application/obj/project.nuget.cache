@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "I9HTq/m35EG/dpAMrVtr0ZHijkJfWsZpr8uBc0e3u9TC40qKQbsne73sbQJXRVAUQY/1b9FccBnecF73fTi4bQ==",
+  "dgSpecHash": "IAvXN5bsklRTPeZSGx09OOH951PwpGCsHtvDMMWllbj9Gx7TuNAd1OLCLlW0pQETUM7IHBFJ2GjzWDL6ycBmeQ==",
   "success": true,
-  "projectFilePath": "/Users/junhanliu/Desktop/utuCodingChallenge/Application/Application.csproj",
+  "projectFilePath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Application/Application.csproj",
   "expectedPackageFiles": [
+    "/Users/junhanliu/.nuget/packages/mediatr/9.0.0/mediatr.9.0.0.nupkg.sha512",
+    "/Users/junhanliu/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/9.0.0/mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "/Users/junhanliu/.nuget/packages/microsoft.entityframeworkcore/5.0.2/microsoft.entityframeworkcore.5.0.2.nupkg.sha512",
     "/Users/junhanliu/.nuget/packages/microsoft.entityframeworkcore.abstractions/5.0.2/microsoft.entityframeworkcore.abstractions.5.0.2.nupkg.sha512",
     "/Users/junhanliu/.nuget/packages/microsoft.entityframeworkcore.analyzers/5.0.2/microsoft.entityframeworkcore.analyzers.5.0.2.nupkg.sha512",

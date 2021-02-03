@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj",
+      "projectUniqueName": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj",
+      "projectPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj",
       "packagesPath": "/Users/junhanliu/.nuget/packages/",
-      "outputPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/obj/",
+      "outputPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/junhanliu/.nuget/NuGet/NuGet.Config"

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace Domain
 {
@@ -8,6 +9,7 @@ namespace Domain
     public Guid CryptoId { get; set; }
 
     public string CryptoName { get; set; }
+
     public List<CryptoHistory> History { get; set; }
   }
 }

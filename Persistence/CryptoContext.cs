@@ -18,27 +18,9 @@ namespace Persistence
       builder.Entity<CryptoHistory>()
       .HasOne(c => c.Crypto)
       .WithMany(h => h.History)
-      .HasForeignKey(h => h.CryptoForeignKey);
-
-      SeedData(builder);
-
+      .HasForeignKey(h => h.CryptoForeignKey)
+      .OnDelete(DeleteBehavior.ClientCascade);
     }
 
-    private void SeedData(ModelBuilder builder)
-    {
-      base.OnModelCreating(builder);
-
-      using (StreamReader sr = new StreamReader("../Persistence/crypto_historical_data.csv"))
-      {
-        string currentLine;
-
-        while ((currentLine = sr.ReadLine()) != null)
-        {
-          
-        }
-
-      }
-
-    }
   }
 }

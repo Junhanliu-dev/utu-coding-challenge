@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/junhanliu/Desktop/utuCodingChallenge/Application/Application.csproj": {}
+    "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Application/Application.csproj": {}
   },
   "projects": {
-    "/Users/junhanliu/Desktop/utuCodingChallenge/Application/Application.csproj": {
+    "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Application/Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/junhanliu/Desktop/utuCodingChallenge/Application/Application.csproj",
+        "projectUniqueName": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Application/Application.csproj",
         "projectName": "Application",
-        "projectPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Application/Application.csproj",
+        "projectPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Application/Application.csproj",
         "packagesPath": "/Users/junhanliu/.nuget/packages/",
-        "outputPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Application/obj/",
+        "outputPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/junhanliu/.nuget/NuGet/NuGet.Config"
@@ -26,11 +26,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj": {
-                "projectPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj"
+              "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj": {
+                "projectPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj"
               },
-              "/Users/junhanliu/Desktop/utuCodingChallenge/Persistence/Persistence.csproj": {
-                "projectPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Persistence/Persistence.csproj"
+              "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Persistence/Persistence.csproj": {
+                "projectPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Persistence/Persistence.csproj"
               }
             }
           }
@@ -44,6 +44,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -63,14 +69,14 @@
         }
       }
     },
-    "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj": {
+    "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj",
+        "projectUniqueName": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj",
+        "projectPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj",
         "packagesPath": "/Users/junhanliu/.nuget/packages/",
-        "outputPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/obj/",
+        "outputPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/junhanliu/.nuget/NuGet/NuGet.Config"
@@ -115,14 +121,14 @@
         }
       }
     },
-    "/Users/junhanliu/Desktop/utuCodingChallenge/Persistence/Persistence.csproj": {
+    "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Persistence/Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/junhanliu/Desktop/utuCodingChallenge/Persistence/Persistence.csproj",
+        "projectUniqueName": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Persistence/Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Persistence/Persistence.csproj",
+        "projectPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Persistence/Persistence.csproj",
         "packagesPath": "/Users/junhanliu/.nuget/packages/",
-        "outputPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Persistence/obj/",
+        "outputPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Persistence/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/junhanliu/.nuget/NuGet/NuGet.Config"
@@ -137,8 +143,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj": {
-                "projectPath": "/Users/junhanliu/Desktop/utuCodingChallenge/Domain/Domain.csproj"
+              "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj": {
+                "projectPath": "/Volumes/ExtendedDrive/IDEWorkspace/VisualStudioCode/utuCodingChallenge/Domain/Domain.csproj"
               }
             }
           }
