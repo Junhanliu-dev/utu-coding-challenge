@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Errors;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +28,14 @@ namespace Application.Cryptos
 
       public async Task<Crypto> Handle(Query request, CancellationToken ct)
       {
-        var crypto = await _context.Cryptos.Include(c => c.History).FirstOrDefaultAsync(c => c.CryptoId == request.Id);
+        var crypto = await _context.Cryptos.Include(c => c.History).SingleOrDefaultAsync(c => c.CryptoId == request.Id, ct);
 
+        if (crypto == null)
+        {
+          throw new RestException(System.Net.HttpStatusCode.NotFound,
+            new {crypto = "Could not find crypto information"});
+        }
+        
         return crypto;
       }
 
