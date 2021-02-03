@@ -63,6 +63,7 @@ namespace Application.Cryptos
 
           viewModel.Add(new CryptoModel
           {
+            Id = crypto.CryptoId,
             CurrencyName = crypto.CryptoName,
             Price = latestRecord == null ? 0d : latestRecord.Open,
             DifferenceIn24Hrs = differenceIn24Hrs,

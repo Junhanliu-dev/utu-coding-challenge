@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container, LinearProgress } from "@material-ui/core";
+import React from "react";
+import { useQuery } from "react-query";
+import "./App.css";
+import { CryptoType } from "./CryptoType";
+import CryptoList from "./features/CryptoList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const getCryptos = async (): Promise<CryptoType[]> =>
+  await await (await fetch("http://localhost:5000/api/crypto")).json();
+
+const App = () => {
+  const { data, isLoading, error } = useQuery<CryptoType[]>(
+    "crypto",
+    getCryptos
   );
-}
+
+  console.log(data);
+
+  if (isLoading) return <LinearProgress />;
+
+  return (
+    <Container className='App'>
+      <CryptoList cryptos={data} />
+    </Container>
+  );
+};
 
 export default App;

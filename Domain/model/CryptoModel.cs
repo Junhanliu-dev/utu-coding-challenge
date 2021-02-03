@@ -1,7 +1,10 @@
+using System;
 namespace Domain.model
 {
   public class CryptoModel
   {
+
+    public Guid Id { get; set; }
     public string CurrencyName { get; set; }
 
     public double Price { get; set; }
