@@ -23,3 +23,4 @@
 
 ## Others
 ### Once the project has started on the local machine, the exposed API end points can be seen through the https://localhost:5001/swagger/index.html
+### The Caching strategy is explained on the Caching strategy.docx under the root folder.
