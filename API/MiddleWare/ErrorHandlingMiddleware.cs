@@ -10,9 +10,8 @@ namespace API.MiddleWare
 {
     public class ErrorHandlingMiddleware
     {
-        private readonly RequestDelegate _next;
-
         private readonly ILogger<ErrorHandlingMiddleware> _logger;
+        private readonly RequestDelegate _next;
 
         public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
         {
@@ -44,25 +43,26 @@ namespace API.MiddleWare
                     errors = re.Errors;
 
                     //add code to respond
-                    context.Response.StatusCode = (int)re.Code;
+                    context.Response.StatusCode = (int) re.Code;
                     break;
                 case Exception e:
                     logger.LogError(ex, "Server error");
                     errors = string.IsNullOrWhiteSpace(e.Message) ? "Error" : e.Message;
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
                     break;
             }
 
             context.Response.ContentType = "application/json";
-            
-            if(errors != null) {
-                var result = JsonSerializer.Serialize(new {
+
+            if (errors != null)
+            {
+                var result = JsonSerializer.Serialize(new
+                {
                     errors
                 });
 
                 await context.Response.WriteAsync(result);
             }
-
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Errors;
@@ -9,36 +10,33 @@ using Persistence;
 
 namespace Application.Cryptos
 {
-  public class Get
-  {
-    public class Query : IRequest<Crypto>
+    public class Get
     {
-      public Guid Id { get; set; }
-    }
-
-    public class Handler : IRequestHandler<Query, Crypto>
-    {
-
-      private readonly CryptoContext _context;
-
-      public Handler(CryptoContext context)
-      {
-        _context = context;
-      }
-
-      public async Task<Crypto> Handle(Query request, CancellationToken ct)
-      {
-        var crypto = await _context.Cryptos.Include(c => c.History).FirstOrDefaultAsync(c => c.CryptoId == request.Id, ct);
-
-        if (crypto == null)
+        public class Query : IRequest<Crypto>
         {
-          throw new RestException(System.Net.HttpStatusCode.NotFound,
-            new {crypto = "Could not find crypto information"});
+            public Guid Id { get; set; }
         }
-        
-        return crypto;
-      }
 
+        public class Handler : IRequestHandler<Query, Crypto>
+        {
+            private readonly CryptoContext _context;
+
+            public Handler(CryptoContext context)
+            {
+                _context = context;
+            }
+
+            public async Task<Crypto> Handle(Query request, CancellationToken ct)
+            {
+                var crypto = await _context.Cryptos.Include(c => c.History)
+                    .FirstOrDefaultAsync(c => c.CryptoId == request.Id, ct);
+
+                if (crypto == null)
+                    throw new RestException(HttpStatusCode.NotFound,
+                        new {crypto = "Could not find crypto information"});
+
+                return crypto;
+            }
+        }
     }
-  }
 }

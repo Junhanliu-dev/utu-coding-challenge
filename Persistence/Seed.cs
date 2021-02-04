@@ -1,101 +1,97 @@
-using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using Domain;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using Domain;
 
 namespace Persistence
 {
-  public class Seed
-  {
-    public static void SeedData(CryptoContext context)
+    public class Seed
     {
-      if (!context.Cryptos.Any())
-      {
-        List<Crypto> cryptoList = ParseFile("/Users/junhanliu/RiderProjects/Reader/crypto_historical_data.csv");
-
-        context.Cryptos.AddRange(cryptoList);
-        context.SaveChanges();
-
-      }
-
-    }
-
-    private static List<Crypto> ParseFile(string filePath)
-    {
-      List<Crypto> seedData = new List<Crypto>();
-
-      using (StreamReader sr = new StreamReader(filePath))
-      {
-        sr.ReadLine();
-        string currentLine;
-
-        while ((currentLine = sr.ReadLine()) != null)
+        public static void SeedData(CryptoContext context)
         {
-          List<string> lineInfo = StringHelper.SplitCSV(currentLine.Trim()).ToList();
-          string currentCryptoName = lineInfo[0];
-
-          if (seedData.Exists(c => c.CryptoName.Equals(currentCryptoName)))
-          {
-            Crypto crypto = seedData.Find(c => c.CryptoName.Equals(currentCryptoName));
-            AddHistory(crypto, lineInfo);
-          }
-          else
-          {
-            Crypto crypto = new Crypto
+            if (!context.Cryptos.Any())
             {
-              CryptoName = currentCryptoName,
-              CryptoId = Guid.NewGuid(),
-              History = new List<CryptoHistory>(),
-            };
+                var cryptoList = ParseFile("/Users/junhanliu/RiderProjects/Reader/crypto_historical_data.csv");
 
-            CryptoHistory history = ParseCryptoHistory(lineInfo);
-            history.Crypto = crypto;
-            history.CryptoForeignKey = crypto.CryptoId;
-            crypto.History.Add(history);
-
-            seedData.Add(crypto);
-
-          }
+                context.Cryptos.AddRange(cryptoList);
+                context.SaveChanges();
+            }
         }
-      }
+
+        private static List<Crypto> ParseFile(string filePath)
+        {
+            var seedData = new List<Crypto>();
+
+            using (var sr = new StreamReader(filePath))
+            {
+                sr.ReadLine();
+                string currentLine;
+
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    var lineInfo = currentLine.Trim().SplitCSV().ToList();
+                    var currentCryptoName = lineInfo[0];
+
+                    if (seedData.Exists(c => c.CryptoName.Equals(currentCryptoName)))
+                    {
+                        var crypto = seedData.Find(c => c.CryptoName.Equals(currentCryptoName));
+                        AddHistory(crypto, lineInfo);
+                    }
+                    else
+                    {
+                        var crypto = new Crypto
+                        {
+                            CryptoName = currentCryptoName,
+                            CryptoId = Guid.NewGuid(),
+                            History = new List<CryptoHistory>()
+                        };
+
+                        var history = ParseCryptoHistory(lineInfo);
+                        history.Crypto = crypto;
+                        history.CryptoForeignKey = crypto.CryptoId;
+                        crypto.History.Add(history);
+
+                        seedData.Add(crypto);
+                    }
+                }
+            }
 
 
-      return seedData;
+            return seedData;
+        }
+
+        private static void AddHistory(Crypto crypto, List<string> lineInfo)
+        {
+            var history = ParseCryptoHistory(lineInfo);
+            history.CryptoForeignKey = crypto.CryptoId;
+            history.Crypto = crypto;
+
+            crypto.History.Add(history);
+        }
+
+        private static CryptoHistory ParseCryptoHistory(List<string> lineInfo)
+        {
+            var date = DateTime.Parse(lineInfo[1].Replace('"', ' ').Trim());
+            var open = double.Parse(lineInfo[2].Replace('"', ' ').Trim());
+            var high = double.Parse(lineInfo[3].Replace('"', ' ').Trim());
+            var low = double.Parse(lineInfo[4].Replace('"', ' ').Trim());
+            var close = double.Parse(lineInfo[5].Replace('"', ' ').Trim());
+            var volume = long.Parse(lineInfo[6].Replace('"', ' ').Trim(), NumberStyles.Number);
+            var marketCap = long.Parse(lineInfo[7].Replace('"', ' ').Trim(), NumberStyles.Number);
+
+
+            return new CryptoHistory
+            {
+                Date = date,
+                Open = open,
+                High = high,
+                Low = low,
+                Close = close,
+                Volume = volume,
+                MarketCap = marketCap
+            };
+        }
     }
-
-    private static void AddHistory(Crypto crypto, List<string> lineInfo)
-    {
-      CryptoHistory history = ParseCryptoHistory(lineInfo);
-      history.CryptoForeignKey = crypto.CryptoId;
-      history.Crypto = crypto;
-
-      crypto.History.Add(history);
-
-    }
-    private static CryptoHistory ParseCryptoHistory(List<string> lineInfo)
-    {
-      DateTime date = DateTime.Parse(lineInfo[1].Replace('"', ' ').Trim());
-      double open = Double.Parse(lineInfo[2].Replace('"', ' ').Trim());
-      double high = Double.Parse(lineInfo[3].Replace('"', ' ').Trim());
-      double low = Double.Parse(lineInfo[4].Replace('"', ' ').Trim());
-      double close = Double.Parse(lineInfo[5].Replace('"', ' ').Trim());
-      long volume = long.Parse(lineInfo[6].Replace('"', ' ').Trim(), NumberStyles.Number);
-      long marketCap = long.Parse(lineInfo[7].Replace('"', ' ').Trim(), NumberStyles.Number);
-
-
-      return new CryptoHistory
-      {
-        Date = date,
-        Open = open,
-        High = high,
-        Low = low,
-        Close = close,
-        Volume = volume,
-        MarketCap = marketCap,
-      };
-    }
-
-  }
 }

@@ -7,18 +7,18 @@ namespace Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_CryptoHistory_Cryptos_CryptoForeignKey",
-                table: "CryptoHistory");
+                "FK_CryptoHistory_Cryptos_CryptoForeignKey",
+                "CryptoHistory");
 
             migrationBuilder.DropColumn(
-                name: "Name",
-                table: "CryptoHistory");
+                "Name",
+                "CryptoHistory");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_CryptoHistory_Cryptos_CryptoForeignKey",
-                table: "CryptoHistory",
-                column: "CryptoForeignKey",
-                principalTable: "Cryptos",
+                "FK_CryptoHistory_Cryptos_CryptoForeignKey",
+                "CryptoHistory",
+                "CryptoForeignKey",
+                "Cryptos",
                 principalColumn: "CryptoId",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -26,20 +26,20 @@ namespace Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_CryptoHistory_Cryptos_CryptoForeignKey",
-                table: "CryptoHistory");
+                "FK_CryptoHistory_Cryptos_CryptoForeignKey",
+                "CryptoHistory");
 
             migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "CryptoHistory",
-                type: "text",
+                "Name",
+                "CryptoHistory",
+                "text",
                 nullable: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_CryptoHistory_Cryptos_CryptoForeignKey",
-                table: "CryptoHistory",
-                column: "CryptoForeignKey",
-                principalTable: "Cryptos",
+                "FK_CryptoHistory_Cryptos_CryptoForeignKey",
+                "CryptoHistory",
+                "CryptoForeignKey",
+                "Cryptos",
                 principalColumn: "CryptoId",
                 onDelete: ReferentialAction.Cascade);
         }
