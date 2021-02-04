@@ -36,7 +36,7 @@ namespace CryptoControllerTest
         [Fact]
         public async void Test_Get_Crypto_Result()
         {
-            var result = _controller.Get(It.IsAny<Guid>());
+            var result = await _controller.Get(It.IsAny<Guid>());
 
             Assert.IsType<ActionResult<RestException>>(result);
         }
