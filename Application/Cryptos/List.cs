@@ -73,12 +73,12 @@ namespace Application.Cryptos
                     {
                         Id = crypto.CryptoId,
                         CurrencyName = crypto.CryptoName,
-                        Price = latestRecord == null ? 0d : latestRecord.Open,
+                        Price = latestRecord?.Open ?? 0d,
                         DifferenceIn24Hrs = differenceIn24Hrs,
                         DifferenceIn7Days = differenceIn7Days,
                         DifferenceInMonth = differenceInMonth,
-                        Volume = latestRecord == null ? 0L : latestRecord.Volume,
-                        MarketCap = latestRecord == null ? 0L : latestRecord.MarketCap
+                        Volume = latestRecord?.Volume ?? 0L,
+                        MarketCap = latestRecord?.MarketCap ?? 0L
                     });
                 }
 
